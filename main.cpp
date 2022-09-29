@@ -5,14 +5,15 @@ using namespace std;
 
 const string ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-string convertNumberToBase(int number, int base) {
+string convertNumberToBase(unsigned long long number, int base) {
     string baseToDisplay = base < 10 ? "0" + to_string(base) : to_string(base);
 
     if (number == 0) {
         return "(0)" + baseToDisplay;
     }
 
-    int quotient, remainder;
+    unsigned long long quotient;
+    int remainder;
     string result, remainderToDisplay;
 
     quotient = number;
@@ -51,7 +52,7 @@ string createSpaces(int length) {
 }
 
 int main() {
-    int number;
+    unsigned long long number;
 
     cout << "Entrez un nombre entier positif " << endl;
     cin >> number;
