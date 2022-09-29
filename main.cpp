@@ -5,14 +5,14 @@ using namespace std;
 
 const string ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-string convertNumberToBase(unsigned number, unsigned base) {
+string convertNumberToBase(int number, int base) {
     string baseToDisplay = base < 10 ? "0" + to_string(base) : to_string(base);
 
     if (number == 0) {
         return "(0)" + baseToDisplay;
     }
 
-    unsigned quotient, remainder;
+    int quotient, remainder;
     string result, remainderToDisplay;
 
     quotient = number;
@@ -22,7 +22,7 @@ string convertNumberToBase(unsigned number, unsigned base) {
         quotient /= base;
 
         if (remainder > 9) {
-            for (unsigned i = 10; i < 36; ++i) {
+            for (int i = 10; i < 36; ++i) {
                 if (remainder == i) {
                     remainderToDisplay = ALPHABET[i - 10];
                     break;
@@ -40,10 +40,10 @@ string convertNumberToBase(unsigned number, unsigned base) {
     return result;
 }
 
-string createSpaces(unsigned length) {
+string createSpaces(int length) {
     string spaces;
 
-    for (unsigned i = 0; i < length; i++) {
+    for (int i = 0; i < length; i++) {
         spaces.insert(i, " ");
     }
 
@@ -51,7 +51,7 @@ string createSpaces(unsigned length) {
 }
 
 int main() {
-    unsigned number;
+    int number;
 
     cout << "Entrez un nombre entier positif " << endl;
     cin >> number;
@@ -60,7 +60,7 @@ int main() {
     string firstResult = convertNumberToBase(number, 2);
     cout << " = " << firstResult << endl;
 
-    for (unsigned i = 3; i < 37; ++i) {
+    for (int i = 3; i < 37; ++i) {
         string result = convertNumberToBase(number, i);
         string spacesBeforeEqual = createSpaces(to_string(number).length());
         string spacesAfterEqual = createSpaces(firstResult.length() - result.length());
